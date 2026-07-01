@@ -1,0 +1,48 @@
+# ===== Eclipse =====
+.settings/
+.project
+.classpath
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+.recommenders
+
+# ===== Java derleme çıktıları =====
+*.class
+
+# ===== Build klasörleri =====
+build/
+out/
+target/
+
+# ===== Log dosyaları =====
+*.log
+
+# ===== OS dosyaları =====
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ===== IntelliJ IDEA (ileride kullanırsan) =====
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# ===== VS Code (ileride kullanırsan) =====
+.vscode/
