@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 
+import entity.Entity;
 import game.GameConstants;
 import graphics.Camera;
 
@@ -21,6 +22,30 @@ public class World {
 			segments.add(generator.generateNext(topY));
 			topY -= GameConstants.SEGMENT_HEIGHT;
 		}
+	}
+	
+	public boolean collidesWithBank(Entity e) {
+		double left = e.getX();
+		double right = e.getX() + e.getWidth();
+		double top = e.getY();
+		double bottom = e.getY() + e.getHeight();
+		
+		for (RiverSegment segment : segments) {
+			double segmentTop = segment.getWorldY();
+			double segmentBottom = segmentTop + GameConstants.SEGMENT_HEIGHT;
+			
+			boolean verticalOverlap = segmentTop < bottom && segmentBottom > top;
+			
+			if(!verticalOverlap) {
+				continue;
+			}
+			
+			if(left < segment.getLeftBank() || right > segment.getRightBank()) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 	public void update(Camera camera) {

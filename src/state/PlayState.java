@@ -41,6 +41,12 @@ public class PlayState extends State{
 		camera.update(deltaTime);
 		world.update(camera);
 		
+		if(world.collidesWithBank(player)) {
+			player.kill();
+			manager.setState(new GameOverState(manager));
+			return;
+		}
+		
 		if (input.isDown(KeyEvent.VK_SPACE) && player.canShoot()) {
 	        bullets.add(player.shoot());
 	    }
