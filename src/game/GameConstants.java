@@ -28,6 +28,11 @@ public final class GameConstants {
     public static final int RIVER_MAX_WIDTH = 350;
     public static final int BANK_MARGIN     = 20;
     public static final int RIVER_DRIFT     = 3;
+    public static final int    ENEMY_WIDTH       = 34;
+    public static final int    ENEMY_HEIGHT      = 20;
+    public static final double HELICOPTER_SPEED  = 80;
+    public static final Color  COLOR_ENEMY       = new Color(200, 40, 40);
+    public static final double ENEMY_SPAWN_GAP   = 250;
     
     private GameConstants() {}
 }

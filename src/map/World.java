@@ -24,6 +24,18 @@ public class World {
 		}
 	}
 	
+	public RiverSegment getSegmentAt(double worldY) {
+	    for (RiverSegment seg : segments) {
+	        double segTop = seg.getWorldY();
+	        double segBottom = segTop + GameConstants.SEGMENT_HEIGHT;
+	        
+	        if (worldY >= segTop && worldY < segBottom) {
+	            return seg;
+	        }
+	    }
+	    return null;
+	}
+	
 	public boolean collidesWithBank(Entity e) {
 		double left = e.getX();
 		double right = e.getX() + e.getWidth();
