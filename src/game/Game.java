@@ -54,7 +54,6 @@ public class Game extends JPanel{
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		stateManager.render(g2);
 		g2.setColor(GameConstants.COLOR_HUD_TEXT);
-		g2.drawString("FPS: " + loop.getCurrentFps(), 10, 20);
 	}
 	
 	

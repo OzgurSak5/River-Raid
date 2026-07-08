@@ -1,6 +1,7 @@
 package state;
 
 import java.awt.Color;
+import java.util.Random;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
@@ -9,6 +10,8 @@ import java.util.List;
 
 import enemy.Enemy;
 import enemy.Helicopter;
+import enemy.Jet;
+import enemy.Ship;
 import entity.Bullet;
 import entity.FuelDepot;
 import entity.Player;
@@ -18,6 +21,7 @@ import graphics.Camera;
 import input.KeyInput;
 import map.RiverSegment;
 import map.World;
+import ui.Hud;
 
 public class PlayState extends State{
 	private final Player player;
@@ -29,6 +33,8 @@ public class PlayState extends State{
 	private final GameContext context = new GameContext();
 	private final List<FuelDepot> fuelDepots = new ArrayList<>();
 	private double nextDepotSpawnY;
+	private final Hud hud = new Hud();
+	private final Random random = new Random();
 
 	public PlayState(StateManager manager) {
 		super(manager);
@@ -78,8 +84,18 @@ public class PlayState extends State{
 	    int leftBank = segment.getLeftBank();
 	    int rightBank = segment.getRightBank();
 	    double centerX = (leftBank + rightBank) / 2.0 - GameConstants.ENEMY_WIDTH / 2.0;
-	    Helicopter heli = new Helicopter(centerX, worldY, leftBank, rightBank);
-	    enemies.add(heli);
+	    
+	    int type = random.nextInt(3);
+	    Enemy enemy;
+	    if (type == 0) {
+	        enemy = new Helicopter(centerX, worldY, leftBank, rightBank);
+	    } else if (type == 1) {
+	        enemy = new Ship(centerX, worldY, leftBank, rightBank);
+	    } else {
+	        enemy = new Jet(leftBank, worldY, GameConstants.JET_SPEED);
+	    }
+	    
+	    enemies.add(enemy);
 	}
 
 	@Override
@@ -162,7 +178,12 @@ public class PlayState extends State{
 	    });
 		
 		enemies.removeIf(e -> !e.isAlive());
-		enemies.removeIf(e -> camera.worldToScreenY(e.getY()) > GameConstants.HEIGHT + 50);
+		enemies.removeIf(e -> {
+		    int screenY = camera.worldToScreenY(e.getY());
+		    boolean offBottom = screenY > GameConstants.HEIGHT + 50;
+		    boolean offSides = e.getX() < -100 || e.getX() > GameConstants.WIDTH + 100;
+		    return offBottom || offSides;
+		});
 	}
 
 	@Override
@@ -184,12 +205,7 @@ public class PlayState extends State{
 		}
 		
         player.render(g, camera);
-        //TEST İÇİN HUD
-        g.setColor(Color.WHITE);
-        g.setFont(new Font("Arial", Font.BOLD, 18));
-        g.drawString("SCORE: " + context.getScore(), 10, 40);
-        g.drawString("FUEL: " + (int) context.getFuel(), 10, 65);
-        g.drawString("LIVES: " + context.getLives(), 10, 90);
+        hud.render(g, context);
 	}
 	
 }

@@ -44,6 +44,17 @@ public final class GameConstants {
     public static final int STARTING_LIVES = 3;
     public static final double INVINCIBLE_TIME = 2.0;
     public static final double RESPAWN_FUEL = 50;
+    public static final int    SHIP_WIDTH   = 40;
+    public static final int    SHIP_HEIGHT  = 22;
+    public static final double SHIP_SPEED   = 40;
+    public static final Color COLOR_SHIP = new Color(255, 140, 0);
+    public static final int    SHIP_POINTS  = 50;
+
+    public static final int    JET_WIDTH    = 30;
+    public static final int    JET_HEIGHT   = 16;
+    public static final double JET_SPEED    = 200;
+    public static final Color COLOR_JET = new Color(200, 60, 220);
+    public static final int    JET_POINTS   = 150;
     
     private GameConstants() {}
 }
