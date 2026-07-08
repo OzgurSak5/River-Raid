@@ -33,6 +33,17 @@ public final class GameConstants {
     public static final double HELICOPTER_SPEED  = 80;
     public static final Color  COLOR_ENEMY       = new Color(200, 40, 40);
     public static final double ENEMY_SPAWN_GAP   = 250;
+    public static final double FUEL_MAX          = 100;
+    public static final double FUEL_CONSUMPTION  = 5;
+    public static final double FUEL_REFILL_RATE  = 40;
+    public static final int    HELICOPTER_POINTS = 100;
+    public static final int   FUEL_DEPOT_WIDTH  = 34;
+    public static final int   FUEL_DEPOT_HEIGHT = 40;
+    public static final Color COLOR_FUEL_DEPOT  = new Color(240, 180, 40);
+    public static final double FUEL_DEPOT_SPAWN_GAP = 400;
+    public static final int STARTING_LIVES = 3;
+    public static final double INVINCIBLE_TIME = 2.0;
+    public static final double RESPAWN_FUEL = 50;
     
     private GameConstants() {}
 }

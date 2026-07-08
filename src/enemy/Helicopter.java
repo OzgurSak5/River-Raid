@@ -7,7 +7,7 @@ public class Helicopter extends Enemy{
 	private final double rightBound;
 
 	public Helicopter(double x, double y, double leftBound, double rightBound) {
-		super(x, y, GameConstants.ENEMY_WIDTH, GameConstants.ENEMY_HEIGHT, GameConstants.COLOR_ENEMY);
+		super(x, y, GameConstants.ENEMY_WIDTH, GameConstants.ENEMY_HEIGHT, GameConstants.COLOR_ENEMY,GameConstants.HELICOPTER_POINTS);
 		this.leftBound = leftBound;
 	    this.rightBound = rightBound;
 	    this.velocityX = GameConstants.HELICOPTER_SPEED;
