@@ -20,6 +20,8 @@ public class Hud {
 	    int barX = 60, barY = 66, barWidth = 150, barHeight = 14;
 	    int filledWidth = (int) (barWidth * fuelRatio);
 	    
+	    g.drawString("LEVEL: " + context.getLevel(), 10, 100);
+	    
 	    g.setColor(Color.DARK_GRAY);
 	    g.fillRect(barX, barY, barWidth, barHeight);
 	    if (fuelRatio > 0.3) {
@@ -27,7 +29,6 @@ public class Hud {
 	    } else {
 	        g.setColor(Color.RED);
 	    }
-	    g.fillRect(barX, barY, filledWidth, barHeight);
 	    g.fillRect(barX, barY, filledWidth, barHeight);
         
 	}

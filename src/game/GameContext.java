@@ -4,11 +4,13 @@ public class GameContext {
 	private int score;
 	private double fuel;
 	private int lives;
+	private int level;
 	
 	public GameContext() {
 		this.score = 0;
 		this.fuel = GameConstants.FUEL_MAX;
 		this.lives = GameConstants.STARTING_LIVES;
+		this.level = 1;
 	}
 	
 	public void addScore(int points) {
@@ -51,6 +53,14 @@ public class GameContext {
 	
 	public boolean isGameOver() { 
 		return lives <= 0;
+	}
+	
+	public int getLevel() {
+		return level;
+	}
+	
+	public void nextLevel() {
+		level++;
 	}
 	
 }
