@@ -61,5 +61,10 @@ public final class GameConstants {
     public static final double BRIDGE_DISTANCE = 3000;
     public static final int    BRIDGE_POINTS   = 500;
     
+    public static final int RIVER_PHASE_MIN = 30;
+    public static final int RIVER_PHASE_MAX = 70;
+    public static final double RIVER_CENTER_DRIFT = 1;
+    public static final int RIVER_WIDTH_STEP = 2;
+    
     private GameConstants() {}
 }
